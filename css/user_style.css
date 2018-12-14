@@ -1,0 +1,95 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+    font-family: sans-serif;
+}
+/* navigation bar */
+nav {
+    background-color: #B8860B;
+    font-weight: 800;
+    color: white;
+    font-family: 'Caveat', cursive;
+    font-size: 13px;
+}
+nav ul {
+    display: flex;
+    flex-flow: row;
+    margin: 0;
+    padding: 6px;
+    list-style-type: none;
+}
+nav li.hamburger {
+  display: none;
+}
+nav a {
+    display: block;
+    border-radius: 4px;
+    padding: 12px 24px;
+    color: white;
+    text-decoration: none;
+}
+nav li.logo{
+  margin-right: auto;
+}
+nav li a:hover {
+    background-color: #8cae47;
+}
+
+.box {
+    width: 300px;
+    margin-top:70px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #f1f1f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+}
+.box .box-title {
+    font-size: 1.2em;
+    background: #666666;
+    padding: 4px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+.box .container{
+  display: flex;
+  flex-direction: column;
+}
+.box .item2 {
+    padding: 15px 20px;
+    margin: 0;
+    text-align: center;
+    border-bottom: solid 2px #808080;
+}
+
+.box .item {
+    padding: 15px 20px;
+    margin: 0;
+    text-align: center;
+    border-bottom: dashed 2px #808080;
+}
+
+/* レスポンシブ対応 */
+@media only screen and (min-width:600px) {
+  nav ul {
+      font-size:22px;
+      display: flex;
+      flex-flow: row;
+      margin: 0;
+      padding: 6px;
+      list-style-type: none;
+  }
+  nav li.logo{
+    margin-right: auto;
+  }
+  nav li.hamburger {
+    display: none;
+  }
+  .box{
+    width:600px;
+  }
+}

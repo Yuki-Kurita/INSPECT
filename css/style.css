@@ -1,0 +1,61 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+    font-family: sans-serif;
+}
+/* navigation bar */
+nav {
+    background-color: #B8860B;
+    font-weight: 800;
+    color: white;
+    font-family: 'Caveat', cursive;
+    font-size: 16px;
+}
+nav ul {
+    display: flex;
+    flex-flow: row;
+    margin: 0;
+    padding: 6px;
+    list-style-type: none;
+}
+nav li.hamburger {
+  display: none;
+}
+nav a {
+    display: block;
+    border-radius: 4px;
+    padding: 12px 24px;
+    color: white;
+    text-decoration: none;
+}
+nav li.logo{
+  margin-right: auto;
+}
+nav li a:hover {
+    background-color: #8cae47;
+}
+/* レスポンシブ対応 */
+/* @media only screen and (min-width:500px) {
+  nav{
+    font-size: 16px;
+  }
+} */
+@media only screen and (min-width:600px) {
+  nav ul {
+      font-size:22px;
+      display: flex;
+      flex-flow: row;
+      margin: 0;
+      padding: 6px;
+      list-style-type: none;
+  }
+  nav li.logo{
+    margin-right: auto;
+  }
+  nav li.hamburger {
+    display: none;
+  }
+}
