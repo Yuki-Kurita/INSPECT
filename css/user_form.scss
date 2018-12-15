@@ -1,0 +1,202 @@
+h1, input::-webkit-input-placeholder, button {
+  font-family: 'roboto', sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+h1 {
+  height: 50px;
+  width: 100%;
+  font-size: 26px;
+  font-family: 'Oswald', sans-serif;
+  background: #4682B4;
+  padding-top: 10px;
+  text-align: center;
+  vertical-align:middle;
+  color: white;
+  line-height: 150%;
+  border-radius: 20px 20px 0px 0px;
+  box-shadow: 0 2px 5px 1px rgba(0,0,0,0.2);
+}
+
+form {
+  box-sizing: border-box;
+  width: 500px;
+  margin: 0px auto 0;
+  box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.2);
+  padding-bottom: 40px;
+  border-radius: 20px;
+  h1 {
+    box-sizing: border-box;
+    padding: 20px;
+  }
+}
+
+input {
+  margin-top:3%;
+  margin-right:auto;
+  margin-left:auto;
+  width: 450px;
+  display: block;
+  border: none;
+  padding: 10px 0;
+  border-bottom: solid 1px #191970;
+  transition: all 0.3s cubic-bezier(.64,.09,.08,1);
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 96%, #4682B4 4%);
+  background-position: -200px 0;
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  color: darken(#4682B4, 20%);
+  &:focus, &:valid {
+    box-shadow: none;
+    outline: none;
+    background-position: 0 0;
+    &::-webkit-input-placeholder {
+      color: #4682B4;
+      font-size: 16px;
+      transform: translateY(-20px);
+      visibility: visible !important;
+    }
+  }
+}
+
+input.button {
+  border: none;
+  background: #4682B4;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 6px;
+  width: 200px;
+  color: white;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 6px 0 rgba(0,0,0,0.2);
+  }
+}
+
+.follow {
+  width: 42px;
+  height: 42px;
+  border-radius: 50px;
+  background: #03A9F4;
+  display: inline-block;
+  margin: 50px calc(50% - 21px);
+  white-space: nowrap;
+  padding: 13px;
+  box-sizing: border-box;
+  color: white;
+  transition: all 0.2s ease;
+  font-family: Roboto, sans-serif;
+  text-decoration: none;
+  box-shadow: 0 5px 6px 0 rgba(0,0,0,0.2);
+  i {
+    margin-right: 20px;
+    transition: margin-right 0.2s ease;
+  }
+  &:hover {
+    width: 134px;
+    transform: translateX(-50px);
+    i {
+      margin-right: 10px;
+    }
+  }
+}
+
+.message{
+  font-size: 20px;
+  font-weight: 700px;
+  font-family:'ヒラギノ角ゴ Std W8';
+  color: #990000;
+  height:70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-name{
+  font-family: "ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro"; font-weight: bold;
+  text-align: center;
+  position: relative;
+  margin-top:2%;
+  background: #eff4ff;
+  padding: 2px 5px 2px 20px;
+  font-size: 16px;
+  color: #474747;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.date{
+  margin-top:5%;
+  margin-left: 35%;
+  font-size: 16px;
+  font-family: "ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro"; font-weight: bold;
+}
+
+.radio02{
+  margin-top: 5%;
+  margin-left: 35%;
+  // margin-right: auto;
+}
+.radio02-input{
+  display: none;
+}
+.radio02-input + label{
+  padding-left: 20px;
+  position:relative;
+  margin-right: 20px;
+}
+.radio02-input + label::before{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #999;
+  border-radius: 50%;
+}
+.radio02-input:checked + label{
+  color: #009a9a;
+}
+.radio02-input:checked + label::after{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 11px;
+  height: 11px;
+  background: #009a9a;
+  border-radius: 50%;
+}
+
+
+@media only screen and (max-width:500px) {
+  h1 {
+    font-size: 20px;
+  }
+  form{
+    width:300px;
+  }
+  input{
+    width:250px;
+  }
+  .message{
+    font-size:12px;
+  }
+  .form-name{
+    font-size: 12px;
+  }
+  .date{
+    font-size:12px;
+    margin-left: 20%;
+  }
+  .radio02{
+    margin-left: 30%;
+    font-size:12px
+  }
+}

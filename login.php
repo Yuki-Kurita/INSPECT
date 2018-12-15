@@ -23,7 +23,7 @@ if(!empty($_POST["email"]) && strlen($_POST["password"])>=8){
     // DB接続
     $db = new SQLite3("./DB/customer.sqlite3");
     // クエリ作成
-    $sql = 'SELECT * FROM user';
+    $sql = 'SELECT * FROM users';
     // リクエスト
     $res = $db->query($sql);
     while( $row = $res->fetchArray()){
@@ -36,6 +36,8 @@ if(!empty($_POST["email"]) && strlen($_POST["password"])>=8){
           session_regenerate_id(true);
           $_SESSION['email'] = $row['email'];
           $_SESSION['notification'] = $row['notification'];
+          $_SESSION['user_id'] = $row['user_id'];
+          $_SESSION['password'] = $row['password'];
           $loginCon = False;
           // ユーザ画面に移動
           header("Location: user/information.php");

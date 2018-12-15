@@ -6,6 +6,9 @@ $signUpMessage = "";
 $db = null;
 $sql = null;
 $res = null;
+$sql2 = null;
+$res2 = null;
+$count = 1;
 // create accountが押された場合
 if(isset($_POST['signup'])){
   // email addresの入力チェック
@@ -16,9 +19,6 @@ if(isset($_POST['signup'])){
   else if(strlen($_POST['password'])<8){
     $errorMessage = 'パスワードは8桁以上で入力してください';
   }
-  // emailが被ってないかチェック
-
-
 // メールアドレスとパスワードが入力されている場合
 if(!empty($_POST["email"]) && strlen($_POST["password"])>=8){
   $email = $_POST["email"];
@@ -28,8 +28,14 @@ if(!empty($_POST["email"]) && strlen($_POST["password"])>=8){
   // DBへの追加
   try{
     $db = new SQLite3("DB/customer.sqlite3");
-    $sql = "INSERT INTO user(email,password,notification) values('$email','$hash_pass',$notification)";
+    $sql = 'SELECT * FROM users';
     $res = $db->query($sql);
+    while( $row = $res->fetchArray()){
+      $count += 1;
+      // emailが被ってないかチェック
+    }
+    $sql2 = "INSERT INTO users(user_id,email,password,notification) values($count,'$email','$hash_pass',$notification)";
+    $res2 = $db->query($sql2);
     $signUpMessage = '登録が完了しました。あなたのmail addresは'.$email.'です。<br/>パスワードは'.$password.'です。';
   }catch(Exception $e){
     $errorMessage = 'DBエラー';

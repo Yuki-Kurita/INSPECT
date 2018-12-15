@@ -1,0 +1,154 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+    font-family: "ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro"; font-weight: bold;
+}
+/* navigation bar */
+nav {
+    background-color: #B8860B;
+    font-weight: 800;
+    color: white;
+    font-family: 'Caveat', cursive;
+    font-size: 13px;
+}
+nav ul {
+    display: flex;
+    flex-flow: row;
+    margin: 0;
+    padding: 6px;
+    list-style-type: none;
+}
+nav li.hamburger {
+  display: none;
+}
+nav a {
+    display: block;
+    border-radius: 4px;
+    padding: 12px 24px;
+    color: white;
+    text-decoration: none;
+}
+nav li.logo{
+  margin-right: auto;
+}
+nav li a:hover {
+    background-color: #8cae47;
+}
+
+.box {
+    width: 300px;
+    margin-top:70px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #f1f1f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+    border-radius: 20px 20px 0 0;
+}
+.box .box-title {
+    font-size: 28px;
+    background: #555555;
+    padding: 14px;
+    text-align: center;
+    color: #FFF;
+    font-family: 'Phosphate',sans-serif;
+    letter-spacing: 0.05em;
+    border-radius: 20px 20px 0 0;
+}
+.box .container{
+  display: flex;
+  flex-direction: column;
+}
+.box .item2 {
+    padding: 15px 20px;
+    margin: 0;
+    text-align: center;
+    border-bottom: solid 2px #808080;
+}
+
+.box .item {
+    padding: 15px 20px;
+    margin: 0;
+    text-align: center;
+    border-bottom: dashed 2px #808080;
+}
+
+.b_container {
+  font-family: "ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro"; font-weight: bold;
+  text-align: right;
+  padding-top: 20px;
+}
+.btn-border {
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+  font-family: "ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro"; font-weight: bold;
+  border: 2px solid #9ec34b;
+  font-size: 16px;
+  color: #9ec34b;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: .4s;
+}
+
+.btn-border:hover {
+  background-color: #9ec34b;
+  border-color: #cbe585;
+  color: #FFF;
+}
+
+.check ul {
+  border: solid 2px #ffb03f;
+  padding: 0.5em 1em 0.5em 2.3em;
+  position: relative;
+  margin-top: 2em;
+}
+.check ul li {
+  line-height: 1.5;
+  padding: 0.5em 0;
+  list-style-type: none!important;
+}
+.check ul li:before {/*リストのアイコン*/
+  font-family: "Font Awesome 5 Free";
+  content: "\f00c";
+  position: absolute;
+  left : 1em; /*左端からのアイコンまでの距離*/
+  color: #ffb03f; /*アイコン色*/
+}
+.check ul li:after {/*タブ*/
+  background: #ffb03f;
+  color: #fff;
+  font-family: "Font Awesome 5 Free",'Avenir','Arial',sans-serif;
+  position: absolute;
+  left: -2px;
+  bottom: 100%;
+  padding: 1px 7px;
+  content: '\f0a7  Check';/*アイコンコード＋文字*/
+  letter-spacing: 0.05em;/*字間*/
+  }
+
+
+/* レスポンシブ対応 */
+@media only screen and (min-width:600px) {
+  nav ul {
+      font-size:22px;
+      display: flex;
+      flex-flow: row;
+      margin: 0;
+      padding: 6px;
+      list-style-type: none;
+  }
+  nav li.logo{
+    margin-right: auto;
+  }
+  nav li.hamburger {
+    display: none;
+  }
+  .box{
+    width:600px;
+  }
+}
