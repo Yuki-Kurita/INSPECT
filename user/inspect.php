@@ -4,7 +4,6 @@ if (!isset($_SESSION["email"])) {
     header("Location: Logout.php");
     exit;
 }
-// DBから走行距離等の情報を抽出
 ?>
 
 <html>
@@ -32,13 +31,86 @@ if (!isset($_SESSION["email"])) {
     </nav>
   </header>
   <main>
-    <div class="check">
-    <ul>
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>Photoshop</li>
-      <li>Illustrator</li>
-    </ul>
-  </div>
+    <!-- DBから値抽出 -->
+    <?php
+    try{
+      $errorMessage = '';
+      $config = True;
+      $db = new SQLite3("../DB/customer.sqlite3");
+      $sql = 'SELECT * FROM car';
+      $res = $db->query($sql);
+      while( $row = $res->fetchArray()){
+        if($row['user_id']==$_SESSION['user_id']){
+          $f_distance = $row['first_distance'];
+          $n_distance = $row['now_distance'];
+          $reg_date = $row['reg_date'];
+          $config = False;
+          $distance = $n_distance - $f_distance;
+          $d_year = intval(date("Y")) - intval(substr($reg_date,0,4));
+          $d_month = date("m") - intval(substr($reg_date,4));
+          $time = $d_year*12 + $d_month;
+          $year = floor($time/12);
+          $month = $time%12;
+          break;
+          }
+        }
+          if($config){
+            $errorMessage = '車種を設定して下さい';
+          }
+        }catch(Exception $e){
+          $errorMessage = 'データベースエラー';
+        }
+     ?>
+    <h1 class="topic">車の点検</h1>
+    <table>
+      <tr>
+      <?php
+      // 各パーツの残り距離、期間
+      $eo_d = 5000-$distance;
+      print<<<_HTML_
+        <th>メンテナンスパーツ</th> <th>交換時期の目安</th> <th>費用の目安</th>
+      </tr>
+      <tr>
+        <td colspan="3" class="sub_th">エンジンルーム</td>
+      </tr>
+      <tr>
+
+        <td>エンジンオイル</td><td>後 $eo_d km</td> <td>¥4000</td>
+      </tr>
+      <tr>
+        <td>オイルフィルター</td> <td>24</td> <td>¥2000</td>
+      </tr>
+      <tr>
+        <td>バッテリー</td> <td>20</td> <td>¥10000</td>
+      </tr>
+    </table>
+_HTML_;
+  ?>
+      <!-- <li>エンジンオイル</li>
+      <li>オイルフィルター</li>
+      <li>バッテリー</li>
+      <li>冷却水</li>
+      <li>ブレーキフルード</li>
+      <li>パワステオイル</li>
+      <li>エアクリーナーエレメント</li>
+      <li>スパークプラグ</li>
+      <li>プラグコード</li>
+      <li>タイミングベルト</li>
+      <li>Vベルト</li>
+      <li>ラジエターホース</li>
+      <li>フューエルフィルター</li> -->
+
+
+  <div class="daily-check">
+  <ul>
+    <li>バッテリー</li>
+    <li>エアクリーナー</li>
+    <li>ラジエーター液</li>
+    <li>ワイパー</li>
+    <li>ワイパーブレード</li>
+    <li>Photoshop</li>
+    <li>Illustrator</li>
+  </ul>
+</div>
   </main>
 </body>
