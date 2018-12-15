@@ -10,7 +10,7 @@ if (!isset($_SESSION["email"])) {
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>INSPECT</title>
-  <link rel="stylesheet" type="text/css" href="../css/user_style.css">
+  <link rel="stylesheet" type="text/css" href="../css/userstyle.css">
   <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
 </head>
 
@@ -48,20 +48,67 @@ if (!isset($_SESSION["email"])) {
       print "ON";
     }
      ?>
-    </div>
+    <div class = "b_container">
+    <a href="./user_edit.php" class="btn-border">ユーザー情報の編集</a>
+  </div>
+</div>
     <div class="item">
     車種 :
+    <?php
+    $config = True;
+    try{
+      $db = new SQLite3("../DB/customer.sqlite3");
+      $sql = 'SELECT * FROM car';
+      $res = $db->query($sql);
+      while( $row = $res->fetchArray()){
+        if($row['user_id']==$_SESSION['user_id']){
+          echo $row['car_name'];
+          $f_distance = $row['first_distance'];
+          $n_distance = $row['now_distance'];
+          $reg_date = $row['reg_date'];
+          $config = False;
+        }
+      }
+      if($config){
+        echo '車種を設定して下さい';
+      }
+    }catch(Exception $e){
+      echo 'データベースエラー';
+    }
+     ?>
     </div>
     <div class="item">
     初期走行距離 :
+    <?php
+    if($config){
+      echo '初期の走行距離を設定して下さい';
+    }else{
+      echo $f_distance.' km';
+    }
+     ?>
+    </div>
+    <div class="item">
+    現在走行距離 :
+    <?php
+    if($config){
+      echo '現在の走行距離を設定して下さい';
+    }else{
+      echo $n_distance.' km';
+    }
+     ?>
     </div>
     <div class="item2">
     登録年月日 :
-    </div>
-    <div class="button">
-
-    </div>
-  </div>
+    <?php
+    if($config){
+      echo '登録年月日を設定して下さい';
+    }else{
+      echo substr($reg_date,0,4).' 年 '.substr($reg_date,4).' 月';
+    }
+     ?>
+     <div class = "b_container">
+     <a href="./car_edit.php" class="btn-border">車体情報の編集</a>
+   </div>
 </div>
   </main>
 </body>
