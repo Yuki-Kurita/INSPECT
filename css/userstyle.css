@@ -169,7 +169,7 @@ nav li a:hover {
     left: -2px;
     bottom: 100%;
     padding: 1px 7px;
-    content: '\f1b9  CAR MENTAINANCE';/*アイコンコード＋文字*/
+    content: '\f1b9  CAR MAINTENANCE';/*アイコンコード＋文字*/
     letter-spacing: 0.05em;/*字間*/
     }
 
@@ -187,14 +187,14 @@ nav li a:hover {
       border-right:2px solid #FFC7AF;
       color:#fff;
       background:#FF8856;
-      font-size:12px;
+      font-size:10px;
     }
     table tr:nth-child(odd){
       background:#FFDBC9;
     }
     td{
       font-family: "ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro"; font-weight: bold;
-      font-size: 10px;
+      font-size: 9px;
       text-align: center;
       border-left:2px solid #FFC7AF;
       border-right:2px solid #FFC7AF;
@@ -207,45 +207,37 @@ nav li a:hover {
   border:2px solid #FFC7AF;
 }
 
-h1.topic{
+h2.topic{
+font-size:16px;
 position: relative;
-padding-left: 35px;
+width: 60%;
+background: #f4f4f4;
+padding: 2px 5px 2px 20px;
+color: #474747;
+border-radius: 0 10px 10px 0;
 }
-h1.topic:before{
-position: absolute;
-font-family: "Font Awesome 5 Free";
-content: "\f0eb";
-background: #ffca2c;
-color: white;
-font-weight: normal;
-font-size: 15px;
-border-radius: 50%;
-left: 0;
-width: 25px;
-height: 25px;
-line-height: 25px;
-text-align: center;
-top: 50%;
--moz-transform: translateY(-50%);
--webkit-transform: translateY(-50%);
--ms-transform: translateY(-50%);
-transform: translateY(-50%);
-}
-h1.topic:after {/*吹き出しのちょこんと出た部分*/
-content: '';
-display: block;
-position: absolute;
-left: 20px;
-height: 0;
-width: 0;
-border-top: 7px solid transparent;
-border-bottom: 7px solid transparent;
-border-left: 12px solid #ffca2c;
-top: 50%;
--moz-transform: translateY(-50%);
--webkit-transform: translateY(-50%);
--ms-transform: translateY(-50%);
-transform: translateY(-50%);
+h2.topic:before{
+  font-family: "Font Awesome 5 Free";
+  content: "\f14a";
+  display: inline-block;
+  line-height: 40px;
+  position: absolute;
+  padding: 0em;
+  color: white;
+  background: #ff6363;
+  font-weight: normal;
+  width: 30px;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  left: -1.0em;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  border-radius: 50%;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.29);
 }
 
 .topic{
@@ -282,6 +274,13 @@ transform: translateY(-50%);
   td{
     font-size:16px;
   }
-
+  h2.topic{
+    font-size:26px;
+  }
+  h2.topic:before{
+    width:40px;
+    height:40px;
+    line-height: 40px;
+}
 
 }
