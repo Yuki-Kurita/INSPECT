@@ -54,8 +54,8 @@ if(strlen($_POST["before_pass"])>=8 && strlen($_POST["new_pass"])>=8 && password
     <ul id="menu">
       <li class="hamburger"><a href="#menu"><i class="fa fa-bars"></i></a></li>
         <li class="logo"><a href="inspect.php">INSPECT</a></li>
-        <li><a href="inspect.php">Daily inspection</a></li>
-        <li><a href="checker.php">how to</a></li>
+        <li><a href="inspect.php">Replace</a></li>
+        <li><a href="checker.php">Daily inspection</a></li>
         <li><a href="information.php">User</a></li>
         <li><a href="logout.php">log out</a></li>
       </ul>

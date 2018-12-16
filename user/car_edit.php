@@ -7,12 +7,19 @@ $sql = null;
 $res = null;
 $sql2 = null;
 $res2 = null;
+$sql3 = null;
+$res3 = null;
+$sql4 = null;
+$res4 = null;
+$sql5 = null;
+$res5 = null;
 $insertCon = True;
 if(isset($_POST['edit'])){
   // 距離が数値で入力されているか確認
   if(is_numeric($_POST['f_distance']) && is_numeric($_POST['n_distance'])){
     $f_distance = intval($_POST['f_distance']);
     $n_distance = intval($_POST['n_distance']);
+    $distance = $n_distance - $f_distance;
   }else{
     $errorMessage = "距離は数値を入力してください";
   }
@@ -26,6 +33,34 @@ if(isset($_POST['edit'])){
       $id = $_SESSION['user_id'];
       $car_name = htmlentities($_POST['car_name']);
       $reg_date = intval($_POST['year'].$_POST['month']);
+      $d_year = intval(date("Y")) - intval($_POST['year']);
+      $d_month = intval(date("m")) - intval($_POST['month']);
+      $time = $d_year*12 + $d_month;
+      $year = floor($time/12);
+      $month = $time%12;
+      // engine周りの変数
+      $e_oil = 5000 - $distance;
+      $oilfilter = 0;
+      $batterie = strval(floor((4*12-$time)/12))." 年 ".strval((4*12-$time)%12)." 月 ";
+      $llc = strval(floor((2*12-$time)/12))." 年 ".strval((2*12-$time)%12)." 月 ";
+      $b_fluid = $p_oil = 25000 - $distance;
+      $aircleaner = 45000 - $distance;
+      $spark = 40000 - $distance;
+      $plug = $timing_b = 100000 - $distance;
+      $v_belt = 75000 - $distance;
+      $fuel_i = 175000 - $distance;
+      $fuel_f = 125000 - $distance;
+      // foot周りの変数
+      $tire = strval(floor((5*12-$time)/12))." 年 ".strval((5*12-$time)%12)." 月 ";
+      $tire_r = 5000 - $distance;
+      $Tyrot_end = 100000 - $distance;
+      $brake_h = 30000 - $distance;
+      $brake_c = $damper = 100000 - $distance;
+      // 駆動系
+      $d_oil = 50000 - $distance;
+      $smoke_candle =strval(floor((3*12-$time)/12))." 年 ".strval((3*12-$time)%12)." 月 ";
+      $c_filter = 30000 - $distance;
+      $wiper_b_r = strval(floor((2*12-$time)/12))." 年 ".strval((2*12-$time)%12)." 月 ";
       // データの入れ替え
       $db = new SQLite3("../DB/customer.sqlite3");
       $sql = "SELECT * FROM car";
@@ -43,6 +78,15 @@ if(isset($_POST['edit'])){
       if($insertCon){
         $sql2 = "INSERT INTO car values($id,'$car_name',$f_distance,$n_distance,$reg_date)";
         $res2 = $db->query($sql2);
+        // エンジン周りのDB追加
+        $sql3 = "INSERT INTO engine values($id,$e_oil,$oilfilter,'$batterie','$llc',$b_fluid,$p_oil,$aircleaner,$spark,$plug,$timing_b,$v_belt,$fuel_i,$fuel_f)";
+        $res3 = $db->query($sql3);
+        // foot周り
+        $sql4 = "INSERT INTO foot values($id,'$tire',$tire_r,$Tyrot_end,$brake_h,$brake_c,$damper)";
+        $res4 = $db->query($sql4);
+        // 駆動系
+        $sql5 = "INSERT INTO drive_exterior values($id,$d_oil,'$smoke_candle',$c_filter,'$wiper_b_r')";
+        $res5 = $db->query($sql5);
         $signUpMessage = "車の設定を追加しました";
       }
 
@@ -70,8 +114,8 @@ if(isset($_POST['edit'])){
     <ul id="menu">
       <li class="hamburger"><a href="#menu"><i class="fa fa-bars"></i></a></li>
         <li class="logo"><a href="inspect.php">INSPECT</a></li>
-        <li><a href="inspect.php">Daily inspection</a></li>
-        <li><a href="checker.php">how to</a></li>
+        <li><a href="inspect.php">Replace</a></li>
+        <li><a href="checker.php">Daily inspection</a></li>
         <li><a href="information.php">User</a></li>
         <li><a href="logout.php">log out</a></li>
       </ul>

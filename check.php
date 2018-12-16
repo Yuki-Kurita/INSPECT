@@ -25,3 +25,14 @@ echo 'car_DBの中身は<br/>';
 while( $row = $res2->fetchArray()){
 echo '<p>'.$row[0].' '.$row[1].' '.$row[2].' '.$row[3].' '.$row[4].'</p>';
 }
+
+$sql3 = 'SELECT * FROM engine';
+// リクエスト
+$res3 = $db->query($sql3);
+echo 'engine_DBの中身は<br/>';
+// 結果の行を取得
+while( $row = $res3->fetchArray()){
+  for($i=0;$i<count($row);$i++){
+    echo $row[$i];
+  }
+}
